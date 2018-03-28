@@ -21,7 +21,6 @@ class Posts extends Component {
   }
 
   render() {
-    // console.log('Props',this.props)
     const { posts } = this.props
     return <div className = 'Posts'>
       <div className="SortBy">
@@ -35,9 +34,13 @@ class Posts extends Component {
           </select>
       </div>
 
-      {posts.map(post => (
-        <SinglePost key={post.id} post={post} />
-      ))}
+      {posts && posts.map((post) => {
+        const { id } = post;
+        return(
+          <SinglePost key={id} post={post} />
+        )
+      })}
+
     </div>
   }
 }

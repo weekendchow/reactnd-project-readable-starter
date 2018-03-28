@@ -7,19 +7,19 @@ class Comment extends Component {
     comment: ''
   }
 
+  componentDidMount() {
+    const { body } = this.props
+    this.setState({
+      comment: body
+    })
+  }
+
   onEdit = (id, editId) => {
     this.props.onEdit(id, editId, this.state.comment)
   }
 
   onDelete = (comment) => {
     this.props.onDelete(comment)
-  }
-
-  componentDidMount() {
-    const { body } = this.props
-    this.setState({
-      comment: body
-    })
   }
 
   onChangeComment = (e) => {
@@ -29,29 +29,30 @@ class Comment extends Component {
   }
 
   render() {
-    // console.log('Props',this.props)
-    if(this.props.editId === this.props.id) {
+    const { editId, id, author, edit, onEdit, onDelete } = this.props
+    const { comment } = this.state
+    if(editId === id) {
       return(
         <div className="Comment-Body">
           <div className="Author">
-            author:{this.props.author}
+            author:{author}
           </div>
           <div className="Body">
             <textarea
               cols="50"
               rows="5"
               onChange={this.onChangeComment}
-              value={this.state.comment}
+              value={comment}
               type="text" />
           </div>
           <div className="Edit-Delete">
             <CommentEdit
-              id={this.props.id}
-              edit={this.props.edit}
-              editId={this.props.editId}
+              id={id}
+              edit={edit}
+              editId={editId}
               onEdit={this.onEdit} />
             <CommentDelete
-              id={this.props.id}
+              id={id}
               onDelete={this.onDelete} />
           </div>
         </div>
@@ -60,19 +61,19 @@ class Comment extends Component {
       return(
         <div className="Comment-Body">
           <div className="Author">
-            author:{this.props.author}
+            author:{author}
           </div>
           <div className="Body">
-            {this.state.comment}
+            {comment}
           </div>
           <div className="Edit-Delete">
             <CommentEdit
-              id={this.props.id}
-              editId={this.props.editId}
-              onEdit={this.props.onEdit}/>
+              id={id}
+              editId={editId}
+              onEdit={onEdit}/>
             <CommentDelete
-              id={this.props.id}
-              onDelete={this.props.onDelete}/>
+              id={id}
+              onDelete={onDelete}/>
           </div>
         </div>
       )

@@ -20,12 +20,12 @@ class CommentList extends Component {
   }
 
   onDelete = (comment) => {
-    let parentId = this.props.comments[0].parentId
+    const parentId = this.props.comments[0].parentId
     this.props.deleteComment(comment.id, parentId)
   }
 
   onEdit = (id, editId, comment) => {
-    let parentId = this.props.comments[0].parentId
+    const parentId = this.props.comments[0].parentId
     if (comment) {
       this.props.editComment(editId, parentId,{
         timestamp: Date.now(),
@@ -48,21 +48,21 @@ class CommentList extends Component {
   }
 
   render() {
-    // console.log('Props',this.props)
     let commentList = null
+    const { comments, voteComment } = this.props
 
-    if (this.props.comments) {
-      commentList = this.props.comments.map(comment => (
+    if (comments) {
+      commentList = comments.map(comment => (
         <li className="Comment-li"
           key={comment.id}>
           <div className="Comment-Container">
             <div className="Comment-Vote">
               <TiThumbsUp className='Up' onClick={() => {
-                this.props.voteComment(comment.id, comment.parentId, "upVote")
+                voteComment(comment.id, comment.parentId, "upVote")
               }}/>
               <div className="Score">{comment.voteScore}</div>
               <TiThumbsDown className='Down' onClick={() => {
-                this.props.voteComment(comment.id, comment.parentId, "downVote")
+                voteComment(comment.id, comment.parentId, "downVote")
               }} />
             </div>
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Category from './Category'
 
-function SideNav (props) {
+function SideNav ({ sideNavClass }) {
   return(
-    <div className={props.sideNavClass.join(' ')}>
+    <div className={sideNavClass.join(' ')}>
       <Category />
     </div>
   )

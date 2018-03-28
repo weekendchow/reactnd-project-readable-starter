@@ -23,10 +23,16 @@ class NewPost extends Component {
       category: category
 
     }
-    this.props.createPost(submitPost, () => this.props.history.push('/'))
+
+    if (body === "" || title === "") {
+      alert("Both fields are mandatory")
+    } else {
+      this.props.createPost(submitPost, () => this.props.history.push('/'))
+    }
   }
 
   render() {
+    const { categories } = this.props
     return (
       <form onSubmit={this.addNewPost}>
         <div className="New-Post">
@@ -43,9 +49,12 @@ class NewPost extends Component {
           <div className="NewPost-Category">
             <div>
               <select placeholder="Select Category" name="category" className="field-select">
-                {this.props.categories && this.props.categories.map((category) => (
-                  <option key={category.name} value={category.name}>{category.name}</option>
-                ))}
+              {categories && categories.map((category) => {
+                const { name } = category;
+                return (
+                  <option key={name} value={name}>{name}</option>
+                )
+              })}
               </select>
             </div>
           </div>
@@ -81,10 +90,9 @@ class NewPost extends Component {
   }
 }
 
-const mapStateToProps = ({ posts, categories }) => {
-  return {
-    posts: posts,
-    categories: categories
+const mapStateToProps = ({  categories }) => {
+  return {  
+    categories
   }
 }
 

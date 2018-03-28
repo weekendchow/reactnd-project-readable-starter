@@ -32,7 +32,6 @@ class EditPost extends Component {
   }
 
   render() {
-    // console.log("Props",this.props)
     const { post, categories } = this.props
 
     return (
@@ -52,9 +51,12 @@ class EditPost extends Component {
           <div className="EditPost-Category">
             <div>
             <select name="category" className="field-select">
-            {categories && categories.map((category) => (
-              <option key={category.name} value={category.name}>{category.name}</option>
-            ))}
+            {categories && categories.map((category) => {
+              const { name } = category;
+              return (
+                <option key={name} value={name}>{name}</option>
+              )
+            })}
           </select>
             </div>
           </div>
@@ -96,8 +98,8 @@ class EditPost extends Component {
 const mapStateToProps = ({ posts, categories}, { match }) => {
   const post = posts.find(posts => posts.id === match.params.id)
   return {
-    post: post,
-    categories: categories
+    post,
+    categories
   }
 }
 

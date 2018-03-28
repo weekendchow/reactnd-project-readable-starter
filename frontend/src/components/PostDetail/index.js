@@ -64,8 +64,6 @@ class PostDetail extends Component {
 
 
   render() {
-    // console.log('Props',this.props)
-
     const { post, comments } = this.props
 
     if(!post) {
@@ -89,7 +87,7 @@ class PostDetail extends Component {
 const mapStateToProps = ({ posts, comment }, { match }) => {
   const post = posts.find(posts => posts.id === match.params.id)
   return {
-    post: post,
+    post,
     comments: comment[match.params.id]
   }
 }

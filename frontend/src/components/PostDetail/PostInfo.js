@@ -22,7 +22,6 @@ class PostInfo extends Component {
 
 
   render() {
-    // console.log('Props',this.props)
     const { postVote, fetchAllPosts, post } = this.props
 
       return(

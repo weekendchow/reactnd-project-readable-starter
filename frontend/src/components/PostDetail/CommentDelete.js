@@ -1,22 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class CommentDelete extends Component {
+const CommentDelete = (props) => (
 
-  onDelete = () => {
-    const comment = this.props
-    this.props.onDelete(comment)
-  }
-
-  render() {
-    return(
-      <div className="Comment-Delete">
-        <input
-          onClick={this.onDelete}
-          type="button"
-          value="Delete"/>
-      </div>
-    )
-  }
-}
+    <div className="Comment-Delete">
+      <input
+        onClick={() => props.onDelete(props)}
+        type="button"
+        value="Delete"/>
+    </div>
+)
 
 export default CommentDelete

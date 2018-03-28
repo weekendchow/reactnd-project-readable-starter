@@ -11,12 +11,11 @@ class Category extends Component {
   }
 
   render() {
-    // console.log('Props',this.props)
     const { categories } = this.props
 
-    const list = categories.map((item, index) => {
+    const list = categories.map((item) => {
       return (
-        <li key={index}>
+        <li key={item.name}>
           <Link to={`/${item.path}`}>{item.name}</Link>
         </li>
       )
@@ -43,7 +42,7 @@ const All = () => {
 
 const mapStateToProps = ({ categories }) => {
   return {
-    categories: categories
+    categories
   }
 }
 

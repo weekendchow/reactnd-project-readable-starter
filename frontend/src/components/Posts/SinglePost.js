@@ -24,7 +24,6 @@ class SinglePost extends Component {
     }
 
   render() {
-    // console.log('Props',this.props)
     const { post, comments, postVote, fetchAllPosts } = this.props
 
     return (
@@ -67,7 +66,7 @@ class SinglePost extends Component {
 
 const mapStateToProps = ({ comment }, { post }) => {
   return {
-    post: post,
+    post,
     comments: comment[post.id]
   }
 }

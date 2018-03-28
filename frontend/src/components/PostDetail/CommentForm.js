@@ -1,28 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class CommentForm extends Component {
+const CommentForm = (props) => (
 
-  render() {
-    return(
       <div className="CommentForm">
         <form
-          onSubmit={this.props.onCommentSubmit}>
+          onSubmit={props.onCommentSubmit}>
           <ul className="form-style-1">
             <li>
               <label>Name <span className="required">:</span></label>
               <input
                 type="text"
                 name="author"
-                onChange={this.props.onAuthorChange}
-                value={this.props.author}
+                onChange={props.onAuthorChange}
+                value={props.author}
                 className="field-long" />
             </li>
             <li>
               <label>Comment <span className="required">:</span></label>
               <textarea
                   placeholder="Enter your comments..."
-                  onChange={this.props.onInputChange}
-                  value={this.props.txtComment}
+                  onChange={props.onInputChange}
+                  value={props.txtComment}
                   name="comments"
                   id=""
                   cols="71"
@@ -39,7 +37,5 @@ class CommentForm extends Component {
 
       </div>
     )
-  }
-}
 
 export default CommentForm
