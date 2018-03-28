@@ -56,7 +56,7 @@ class PostDetail extends Component {
               author:''
             })
           })
-
+        this.props.fetchAllPosts()
         this.props.fetchComments(postId)
 
         }

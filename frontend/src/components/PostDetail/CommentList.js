@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Comment from './Comment'
 import TiThumbsUp from 'react-icons/lib/ti/thumbs-up'
 import TiThumbsDown from 'react-icons/lib/ti/thumbs-down'
+import { fetchPosts } from '../../actions/PostsActions'
 
 import {
   deleteComment,
@@ -22,6 +23,7 @@ class CommentList extends Component {
   onDelete = (comment) => {
     const parentId = this.props.comments[0].parentId
     this.props.deleteComment(comment.id, parentId)
+    this.props.fetchAllPosts()
   }
 
   onEdit = (id, editId, comment) => {
@@ -91,6 +93,7 @@ class CommentList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchAllPosts: () => dispatch(fetchPosts()),
     deleteComment: (commentId, parentId) => dispatch(deleteComment(commentId, parentId)),
     editComment: (commentId, parentId, comment) => dispatch(editComment(commentId, parentId, comment)),
     voteComment: (commentId, parentId, option) => dispatch(voteComment(commentId, parentId, option)),

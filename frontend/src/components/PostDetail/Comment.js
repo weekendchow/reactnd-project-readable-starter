@@ -19,7 +19,7 @@ class Comment extends Component {
   }
 
   onDelete = (comment) => {
-    this.props.onDelete(comment)
+    this.props.onDelete(comment)  
   }
 
   onChangeComment = (e) => {

@@ -22,6 +22,7 @@ class PostInfo extends Component {
 
 
   render() {
+    console.log("Props",this.props)
     const { postVote, fetchAllPosts, post } = this.props
 
       return(
@@ -50,6 +51,9 @@ class PostInfo extends Component {
             <div className="Post-Info-Category-Container">
               <div className="Post-Info-Category">
                 <span><b>Category: </b>{post.category}</span>
+              </div>
+              <div className="Post-Info-CommentCount">
+                <span><b>Comment Count: </b>{post.commentCount}</span>
               </div>
               <div className="Post-Info-Edit-Delete-Container">
                 <div className="Post-Info-Edit-Delete-Right">
